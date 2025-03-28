@@ -1,0 +1,1 @@
+Helo this is my portofolio, but I am not sure if I am doing it right. I am a beginner in web development and I am trying to create a portfolio that showcases my skills and projects. I am using React. But this porto in phase development and I am not sure if I is good enough. :3
