@@ -1,16 +1,4 @@
-import { useEffect } from "react";
 import Chat from "../Chat/Chat"
-
-
-// useEffect(() => {
-//     localStorage. setItem('chat', JSON.stringify(messages));
-
-// }, [messages]);
-
-// useEffect(() => {
-//     const data = localStorage.getItem('chat');
-//     data && setMessages(JSON.parse(data));
-//     }, []);
 
     
 const Forum = () => {

@@ -1,16 +1,16 @@
-import Hero from "./components/Hero";
-import Navbar from "./components/Navbar";
-import About from "./components/About";
-import Skills from "./components/Skills";
-import Experience from "./components/Experience";
-import Projects from "./components/Projects";
+import Hero from "../components/Hero";
+import Navbar from "../components/Navbar";
+import About from "../components/About";
+import Skills from "../components/Skills";
+import Experience from "../components/Experience";
+import Projects from "../components/Projects";
 // import Contact from "./components/Contact";
 // import NegativeCircleCursor from "./fitur/NegatifCursor";
 import React, { useEffect, useState } from "react";
 import BarLoader from "react-spinners/BarLoader";
-import TypingEffect from "./fitur/TypingEffect";
+import Navi from "../fitur/Navigate";
 
-function Render() {
+function Portofolio() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -25,11 +25,6 @@ function Render() {
       {loading ?
         <div className="flex justify-center items-center h-screen flex-col gap-4 animate-pulse">
           <BarLoader size={40} color={"#123abc"} loading={loading} />
-          <TypingEffect className="text-4xl"
-            text={"..."}
-            speed={50}
-            delay={30000}
-          />
         </div>
         :
         <div className="overflow-x-hidden text-neutral-300 antialiased selection:bg-cyan-300 selection:text-cyan-900">
@@ -45,6 +40,7 @@ function Render() {
             <Skills />
             <Experience />
             <Projects />
+            <Navi />
             {/* <Contact /> */}
           </div>
         </div>
@@ -53,4 +49,4 @@ function Render() {
   );
 }
 
-export default Render;
+export default Portofolio;

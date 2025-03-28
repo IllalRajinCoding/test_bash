@@ -1,66 +1,47 @@
-import { motion, useAnimation } from "framer-motion";
-import { RiReactjsLine } from "react-icons/ri";
-import { FaNodeJs, FaPhp } from "react-icons/fa";
-import { SiMongodb, SiExpress, SiTypescript, SiPython } from "react-icons/si";
-import { useEffect, useRef } from "react";
-
-const skills = [
-  { icon: <SiMongodb className="text-7xl text-green-400" />, name: "MongoDB" },
-  { icon: <SiExpress className="text-7xl text-gray-400" />, name: "Express" },
-  { icon: <RiReactjsLine className="text-7xl text-cyan-400" />, name: "React" },
-  { icon: <FaNodeJs className="text-7xl text-green-500" />, name: "Node.js" },
-  { icon: <SiTypescript className="text-7xl text-blue-500" />, name: "Typescript" },
-  { icon: <FaPhp className="text-7xl text-blue-500" />, name: "PHP" },
-  { icon: <SiPython className="text-7xl text-yellow-500" />, name: "Python" },
-];
+import { motion } from "framer-motion";
+import { FaHtml5, FaCss3Alt, FaReact, FaPhp, FaJs, FaNodeJs, FaGitAlt } from "react-icons/fa";
+import { SiTailwindcss, SiMysql } from "react-icons/si";
 
 const Skills = () => {
-  const controls = useAnimation();
-  const ref = useRef(null);
-
-  useEffect(() => {
-    const scrollWidth = ref.current.scrollWidth;
-    const offsetWidth = ref.current.offsetWidth;
-    
-    const sequence = async () => {
-      await controls.start({
-        x: -scrollWidth / 2,
-        transition: { 
-          duration: 200, 
-          ease: "linear", 
-          repeat: Infinity, 
-          repeatType: "loop" 
-        }
-      });
-    };
-
-    sequence();
-  }, [controls]);
+  const skills = [
+    { icon: <FaHtml5 className="text-4xl text-orange-500" />, name: "HTML" },
+    { icon: <FaCss3Alt className="text-4xl text-blue-500" />, name: "CSS3" },
+    { icon: <SiTailwindcss className="text-4xl text-cyan-400" />, name: "Tailwind" },
+    { icon: <FaReact className="text-4xl text-blue-400" />, name: "React" },
+    { icon: <FaPhp className="text-4xl text-purple-500" />, name: "PHP" },
+    { icon: <FaJs className="text-4xl text-yellow-400" />, name: "JavaScript" },
+    { icon: <SiMysql className="text-4xl text-blue-300" />, name: "MySQL" },
+    { icon: <FaNodeJs className="text-4xl text-green-500" />, name: "Node.js" },
+    { icon: <FaGitAlt className="text-4xl text-red-500" />, name: "Git" },
+  ];
 
   return (
-    <div className="border-b border-neutral-800 pb-4 ">
-      <h2 className="my-20 text-center text-4xl text-white">Skills</h2>
-      <div className="relative overflow-hidden py-8">
-        <motion.div
-          ref={ref}
-          className="flex gap-8"
-          animate={controls}
-        >
-          {[...skills, ...skills].map((skill, index) => (
+    <section className="py-16 px-4 ">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-3xl font-bold text-center text-white mb-12">
+          <span className="border-b-4 border-blue-500 pb-2">My Skills</span>
+        </h2>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {skills.map((skill, index) => (
             <motion.div
               key={index}
-              className="flex-shrink-0 rounded-2xl border-2 border-neutral-800 p-8 bg-neutral-900/50 backdrop-blur-sm hover:bg-neutral-800/50 transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl"
-              whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+
+              className="bg-neutral-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
               <div className="flex flex-col items-center">
-                {skill.icon}
-                <p className="mt-4 text-center text-lg text-white">{skill.name}</p>
+                <motion.div whileInView={{ opacity: 1, y: 0 }}
+              initial={{ y: -100, opacity: 0 }}
+              transition={{ duration: 0.5 }} className="mb-4 p-3 bg-neutral-700 rounded-full">
+                  {skill.icon}
+                </motion.div>
+                <motion.h3 whileInView={{opacity:1, x:0}} initial={{x:-100, opacity:0}} transition={{duration:1}} className="text-xl font-semibold text-white mb-2">{skill.name}</motion.h3>
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

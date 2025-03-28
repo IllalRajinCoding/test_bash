@@ -19,10 +19,18 @@ const Navbar = () => {
         />
       </div>
       <div className="m-8 text-white flex items-center justify-center gap-4 text-2xl hover:text-10xl">
-        <FaLinkedin className="hover:text-4xl duration-300 transition-all" />
-        <FaGithub className="hover:text-4xl duration-300 transition-all" />
-        <FaSquareXTwitter className="hover:text-4xl duration-300 transition-all" />
-        <FaInstagram className="hover:text-4xl duration-300 transition-all" />
+        <a href="https://www.linkedin.com/in/robbanie-hillaly-kurniadien-1b285a334/" target="_blank" rel="noopener noreferrer">
+          <FaLinkedin className="hover:text-4xl duration-300 transition-all" />
+        </a>
+        <a href="https://github.com/IllalRajinCoding" target="_blank" rel="noopener noreferrer">
+          <FaGithub className="hover:text-4xl duration-300 transition-all" />
+        </a>
+        <a href="https://twitter.com/Loxyland" target="_blank" rel="noopener noreferrer">
+          <FaSquareXTwitter className="hover:text-4xl duration-300 transition-all" />
+        </a>
+        <a href="https://www.instagram.com/Loxyland" target="_blank" rel="noopener noreferrer">
+          <FaInstagram className="hover:text-4xl duration-300 transition-all" />
+        </a>
       </div>
     </nav>
   );
