@@ -27,7 +27,9 @@ const Hero = () => {
               whileInView={{ opacity: 1, x: 0 }}
               initial={{ x: 100, opacity: 0 }}
               transition={{ duration: 1 }}
-              className="my-2 max-w-xl py-6 font-light text-white tracking-tighter lg:text-left text-sm lg:text"
+              className="my-2 max-w-xl py-6 font-ligh whileInView={{ opacity: 1, x: 0 }}
+              initial={{ x: 100, opacity: 0 }}
+              transition={{ duration: 1 }}t text-white tracking-tighter lg:text-left text-sm lg:text"
             >
               {HERO_CONTENT}
             </motion.p>
