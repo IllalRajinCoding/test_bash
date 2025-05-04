@@ -9,7 +9,7 @@ const Hero = () => {
     <div className=" pb-4 lg:mb-35">
       <div className="flex flex-col lg:flex-row">
         <div className="w-full px-4 mb-8 lg:mb-0 lg:w-1/2">
-          <div className="flex flex-col items-center lg:items-start">
+          <div className="flex flex-col pt-25 items-center lg:items-start">
             <TypingEffect
               text={"I'm Robbanie Hillaly Kurniadien"}
               speed={100}
@@ -19,7 +19,7 @@ const Hero = () => {
               whileInView={{ opacity: 1, x: 0 }}
               initial={{ x: -100, opacity: 0 }}
               transition={{ duration: 0.5 }}
-              className="bg-gradient-to-r from-pink-300 via-slate-500 to-purple-500 bg-clip-text text-sm lg:text-4xl tracking-tight text-transparent text-center lg:text-left"
+              className="bg-gradient-to-r text-2xl from-pink-300 via-slate-500 to-purple-500 bg-clip-text lg:text-4xl tracking-tight text-transparent text-center lg:text-left"
             >
               Front-End Developer
             </motion.span>
@@ -27,9 +27,7 @@ const Hero = () => {
               whileInView={{ opacity: 1, x: 0 }}
               initial={{ x: 100, opacity: 0 }}
               transition={{ duration: 1 }}
-              className="my-2 max-w-xl py-6 font-ligh whileInView={{ opacity: 1, x: 0 }}
-              initial={{ x: 100, opacity: 0 }}
-              transition={{ duration: 1 }}t text-white tracking-tighter lg:text-left text-sm lg:text"
+              className="my-2 max-w-xl py-6  lg:text-left text-xl lg:text-2xl"
             >
               {HERO_CONTENT}
             </motion.p>

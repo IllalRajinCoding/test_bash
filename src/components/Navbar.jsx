@@ -4,13 +4,13 @@ import { FaLinkedin } from "react-icons/fa";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 
-const Link =()=> {
-  
+const Link = () => {
+
 }
 
 const Navbar = () => {
   return (
-    <nav className="mb-20 flex items-center justify-between py-6">
+    <nav className=" flex items-center justify-between py-6">
       <div className="flex flex-shrink-0 items-center transition-all duration-300 group">
         <img
           className="mx-2 w-10 transition-all duration-300 group-hover:filter group-hover:drop-shadow-[0_0_60px_rgba(186,230,253,1)]"

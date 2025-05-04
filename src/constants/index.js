@@ -13,29 +13,29 @@ export const EXPERIENCES = [
     role: "Illuslator",
     company: "Freelance",
     description: `I Accept project illuslator fan art anime or something same`,
-    technologies: ["Ibis Paint", "Tradi"],
+    technologies: ["Ibis Paint", "Traditional"],
   },
   {
     year: "2023",
     role: "Winner 2st Manga Month Launguage",
     company: "SMAN 1 Babakan Madang",
     description: `Designed and developed user interfaces for web applications using Next.js and React. Worked closely with backend developers to integrate frontend components with Node.js APIs. Implemented responsive designs and optimized frontend performance.`,
-    technologies: ["Tradi"],
+    technologies: ["Offline"],
   },
   {
     year: "2021 - Present",
     role: "Design Grafis",
     company: "Freelance",
     description: `Developed and maintained web applications using JavaScript, React.js, and Node.js. Designed and implemented RESTful APIs for data communication. Collaborated with cross-functional teams to deliver high-quality software products on schedule.`,
-    technologies: ["Pixellab", "Alight Motion"],
+    technologies: ["Pixellab", "Alight Motion", "Figma", "Adobe Photoshop"],
   },
-  // {
-  //   year: "2025",
-  //   role: "Front-End",
-  //   company: "Project UAS",
-  //   description: `Contributed to the development of web applications using JavaScript, React.js, and Node.js. Managed databases and implemented data storage solutions using MongoDB. Worked closely with product managers to prioritize features and enhancements.`,
-  //   technologies: ["Ruby", "Rails", "PHP", "Sqlite"],
-  // },
+  {
+    year: "2025",
+    role: "Winner Gold Medal Mathematics",
+    company: "KSN - Kejuaraan Sains Nasional",
+    description: `Contributed event PUSKESNAS online`,
+    technologies: ["Online"],
+  },
 ];
 
 export const PROJECTS = [
