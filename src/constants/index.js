@@ -2,6 +2,12 @@ import project1 from "../assets/projects/project-1.jpg";
 import project2 from "../assets/projects/project-2.jpg";
 import project3 from "../assets/projects/project-3.jpg";
 import project4 from "../assets/projects/project-4.jpg";
+import pdf from "../assets/piagam.pdf";
+import no from "../assets/error.svg";
+
+export const NOTFOUND = {
+  img: no
+}
 
 export const HERO_CONTENT = `Learn and learn that is motivation for me to be Front-End developer. I just like coding, drawing, ethical hacking and learn machine learning, cause i love mathematics.`;
 
@@ -14,6 +20,8 @@ export const EXPERIENCES = [
     company: "Freelance",
     description: `I Accept project illuslator fan art anime or something same`,
     technologies: ["Ibis Paint", "Traditional"],
+    certificateUrl: null
+
   },
   {
     year: "2023",
@@ -21,6 +29,7 @@ export const EXPERIENCES = [
     company: "SMAN 1 Babakan Madang",
     description: `Designed and developed user interfaces for web applications using Next.js and React. Worked closely with backend developers to integrate frontend components with Node.js APIs. Implemented responsive designs and optimized frontend performance.`,
     technologies: ["Offline"],
+    certificateUrl: null
   },
   {
     year: "2021 - Present",
@@ -28,6 +37,7 @@ export const EXPERIENCES = [
     company: "Freelance",
     description: `Developed and maintained web applications using JavaScript, React.js, and Node.js. Designed and implemented RESTful APIs for data communication. Collaborated with cross-functional teams to deliver high-quality software products on schedule.`,
     technologies: ["Pixellab", "Alight Motion", "Figma", "Adobe Photoshop"],
+    certificateUrl: null
   },
   {
     year: "2025",
@@ -35,6 +45,7 @@ export const EXPERIENCES = [
     company: "KSN - Kejuaraan Sains Nasional",
     description: `Contributed event PUSKESNAS online`,
     technologies: ["Online"],
+    certificateUrl: pdf
   },
 ];
 

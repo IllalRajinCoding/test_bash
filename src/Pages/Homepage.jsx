@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { useEffect, useRef } from "react";
-import TypingEffect from "../fitur/TypingEffect";
 import { motion } from "framer-motion";
 
 const Homepage = () => {
@@ -10,7 +9,7 @@ const Homepage = () => {
     useEffect(() => {
         const canvas = canvasRef.current;
         if (!canvas) return;
-        
+
         const ctx = canvas.getContext('2d');
         if (!ctx) return;
 
@@ -21,63 +20,66 @@ const Homepage = () => {
         };
         resizeCanvas();
 
-        // Particle array
-        const particles = [];
-        const particleCount = 25; // Jumlah partikel lebih sedikit untuk kesan minimalis
+        // Abstract shapes array
+        const shapes = [];
+        const shapeCount = 15;
 
-        // Create particles
-        for (let i = 0; i < particleCount; i++) {
-            const isHorizontal = Math.random() > 0.5;
-            particles.push({
+        // Create abstract shapes
+        for (let i = 0; i < shapeCount; i++) {
+            shapes.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
-                size: Math.random() * 1.5 + 0.5,
-                speed: Math.random() * 0.3 + 0.2, // Lebih lambat
-                direction: isHorizontal ? (Math.random() > 0.5 ? 1 : -1) : 0,
-                directionY: !isHorizontal ? (Math.random() > 0.5 ? 1 : -1) : 0,
-                color: `rgba(180, 179, 255, ${Math.random() * 0.15 + 0.05})`, // Warna lebih soft
-                isHorizontal
+                size: Math.random() * 100 + 50,
+                rotation: Math.random() * 360,
+                speed: Math.random() * 0.5 + 0.2,
+                color: `hsla(${Math.random() * 60 + 250}, 80%, 70%, ${Math.random() * 0.2 + 0.1})`,
+                type: Math.floor(Math.random() * 3) // 0: circle, 1: triangle, 2: rectangle
             });
         }
 
         // Animation loop
         let animationFrameId;
         const animate = () => {
-            // Clear dengan efek fade yang lebih halus
-            ctx.fillStyle = 'rgba(8, 8, 16, 0.08)';
+            ctx.fillStyle = 'rgba(5, 5, 10, 0.05)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            // Update and draw particles
-            particles.forEach(particle => {
-                // Gerakan linear
-                if (particle.isHorizontal) {
-                    particle.x += particle.speed * particle.direction;
-                    if (particle.x < 0) particle.x = canvas.width;
-                    if (particle.x > canvas.width) particle.x = 0;
-                } else {
-                    particle.y += particle.speed * particle.directionY;
-                    if (particle.y < 0) particle.y = canvas.height;
-                    if (particle.y > canvas.height) particle.y = 0;
+
+            // Draw abstract shapes
+            shapes.forEach(shape => {
+                shape.rotation += shape.speed * 0.2;
+                shape.x += Math.sin(shape.rotation * Math.PI / 180) * shape.speed;
+                shape.y += Math.cos(shape.rotation * Math.PI / 180) * shape.speed;
+
+                // Wrap around screen
+                if (shape.x < -shape.size) shape.x = canvas.width + shape.size;
+                if (shape.x > canvas.width + shape.size) shape.x = -shape.size;
+                if (shape.y < -shape.size) shape.y = canvas.height + shape.size;
+                if (shape.y > canvas.height + shape.size) shape.y = -shape.size;
+
+                ctx.save();
+                ctx.translate(shape.x, shape.y);
+                ctx.rotate(shape.rotation * Math.PI / 180);
+                ctx.fillStyle = shape.color;
+
+                switch (shape.type) {
+                    case 0: // Circle
+                        ctx.beginPath();
+                        ctx.arc(0, 0, shape.size / 2, 0, Math.PI * 2);
+                        ctx.fill();
+                        break;
+                    case 1: // Triangle
+                        ctx.beginPath();
+                        ctx.moveTo(0, -shape.size / 2);
+                        ctx.lineTo(shape.size / 2, shape.size / 2);
+                        ctx.lineTo(-shape.size / 2, shape.size / 2);
+                        ctx.closePath();
+                        ctx.fill();
+                        break;
+                    case 2: // Rectangle
+                        ctx.fillRect(-shape.size / 2, -shape.size / 2, shape.size, shape.size);
+                        break;
                 }
-                
-                // Draw particle dengan glow effect
-                const gradient = ctx.createRadialGradient(
-                    particle.x, particle.y, 0,
-                    particle.x, particle.y, particle.size * 3
-                );
-                gradient.addColorStop(0, particle.color);
-                gradient.addColorStop(1, 'rgba(180, 179, 255, 0)');
-                
-                ctx.fillStyle = gradient;
-                ctx.beginPath();
-                ctx.arc(particle.x, particle.y, particle.size * 3, 0, Math.PI * 2);
-                ctx.fill();
-                
-                // Particle core
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
-                ctx.beginPath();
-                ctx.arc(particle.x, particle.y, particle.size * 0.6, 0, Math.PI * 2);
-                ctx.fill();
+
+                ctx.restore();
             });
 
             animationFrameId = requestAnimationFrame(animate);
@@ -99,71 +101,99 @@ const Homepage = () => {
 
     return (
         <div className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden bg-neutral-950">
-            {/* Background gradient */}
-            <div className="fixed inset-0 -z-10 opacity-60">
-                <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-900/30 via-transparent to-transparent"></div>
-            </div>
-            
-            {/* Particle canvas */}
-            <canvas 
-                ref={canvasRef} 
-                className="absolute inset-0 w-full h-full pointer-events-none opacity-60"
+            {/* Abstract canvas background */}
+            <canvas
+                ref={canvasRef}
+                className="absolute inset-0 w-full h-full pointer-events-none opacity-70"
             />
 
-            {/* Main content */}
-            <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
-                className="z-10 text-center p-8 rounded-3xl backdrop-blur-lg bg-white/5 border border-white/10 shadow-xl"
+            {/* Main content - abstract floating elements */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1.5 }}
+                className="z-10 relative w-full h-full"
             >
-                <div className="mb-6">
-                    <TypingEffect 
-                        text="Welcome Explorer" 
-                        speed={80} 
-                        delay={500}
-                        className="text-4xl md:text-5xl font-light text-white tracking-wider"
-                    />
-                </div>
-                
-                <motion.p 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1.2, duration: 0.8 }}
-                    className="text-lg text-white/70 mb-10 max-w-md leading-relaxed font-light"
+                {/* Floating abstract shapes */}
+                <motion.div
+                    animate={{
+                        x: ["0%", "5%", "0%"],
+                        y: ["0%", "-3%", "0%"],
+                        rotate: [0, 5, 0]
+                    }}
+                    transition={{
+                        duration: 15,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                    className="absolute top-1/4 left-1/4 w-40 h-40 rounded-full bg-purple-500/10 blur-3xl"
+                />
+
+                <motion.div
+                    animate={{
+                        x: ["0%", "-8%", "0%"],
+                        y: ["0%", "10%", "0%"],
+                        rotate: [0, -10, 0]
+                    }}
+                    transition={{
+                        duration: 20,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                    className="absolute bottom-1/3 right-1/4 w-60 h-60 bg-blue-500/10 blur-3xl"
+                    style={{ clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)" }}
+                />
+
+                {/* Minimal interactive element */}
+                <motion.div
+                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center"
+                    whileHover={{ scale: 1.05 }}
                 >
-                    Discover my digital creation journey
-                </motion.p>
-                
-                <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="px-8 py-3 bg-white/5 border border-white/20 text-white rounded-lg hover:bg-white/10 transition-all duration-300 flex items-center gap-2 font-light"
+                    <motion.div
+                        className="text-white text-2xl font-light mb-6 cursor-pointer rotate-12"
                         onClick={() => navigate("/Portofolio")}
+                        whileHover={{ opacity: 0.8 }}
                     >
-                        <span>View Portfolio</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clipRule="evenodd" />
-                        </svg>
-                    </motion.button>
-                    
-                </div>
+                        /enter to  <span className="text-2xl text-amber-600">Start</span>?
+                    </motion.div>
+
+                    <motion.div
+                        className="w-20 h-1 bg-white/30 mx-auto mt-8"
+                        animate={{
+                            scaleX: [1, 1.5, 1],
+                            opacity: [0.6, 1, 0.6]
+                        }}
+                        transition={{
+                            duration: 3,
+                            repeat: Infinity
+                        }}
+                    />
+                </motion.div>
             </motion.div>
 
-            {/* Floating decorative elements */}
-            <motion.div 
-                animate={{
-                    y: [0, -15, 0],
-                    opacity: [0.6, 0.8, 0.6]
-                }}
-                transition={{
-                    duration: 8,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                }}
-                className="absolute bottom-10 left-10 w-20 h-20 rounded-full bg-purple-500/10 blur-xl pointer-events-none"
-            />
+            {/* Floating particles */}
+            {[...Array(10)].map((_, i) => (
+                <motion.div
+                    key={i}
+                    className="absolute rounded-full bg-white/5 pointer-events-none"
+                    style={{
+                        width: `${Math.random() * 10 + 5}px`,
+                        height: `${Math.random() * 10 + 5}px`,
+                        left: `${Math.random() * 100}%`,
+                        top: `${Math.random() * 100}%`
+                    }}
+                    animate={{
+                        y: [0, (Math.random() - 0.5) * 100],
+                        x: [0, (Math.random() - 0.5) * 100],
+                        opacity: [0, Math.random() * 0.3 + 0.1, 0]
+                    }}
+                    transition={{
+                        duration: Math.random() * 20 + 10,
+                        repeat: Infinity,
+                        repeatType: "reverse"
+                    }}
+                />
+            ))}
         </div>
     );
 };

@@ -3,9 +3,9 @@ import { Star, GitFork, GitCommit } from 'lucide-react';
 const GithubStats = () => {
     // Data statis (hardcoded)
     const stats = {
-        stars: 1,
+        stars: 4,
         forks: 2,
-        commits: 184,
+        commits: 984,
         username: 'IllalRajinCoding'
     };
 
