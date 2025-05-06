@@ -4,7 +4,6 @@ import About from "../components/About";
 import Skills from "../components/Skills";
 import Experience from "../components/Experience";
 import Projects from "../components/Projects";
-// import Contact from "./components/Contact";
 import NegativeCircleCursor from "../fitur/NegatifCursor";
 import React, { useEffect, useState } from "react";
 import BarLoader from "react-spinners/BarLoader";
@@ -24,7 +23,7 @@ function Portofolio() {
   return (
     <div>
       {loading ?
-        <div className="flex justify-center items-center h-screen flex-col gap-4 animate-pulse">
+        <div className="flex justify-center items-center h-screen flex-col bg-black gap-4 animate-pulse">
           <BarLoader size={40} color={"#123abc"} loading={loading} />
         </div>
         :

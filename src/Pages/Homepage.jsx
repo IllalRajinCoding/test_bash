@@ -32,8 +32,8 @@ const Homepage = () => {
                 size: Math.random() * 100 + 50,
                 rotation: Math.random() * 360,
                 speed: Math.random() * 0.5 + 0.2,
-                color: `hsla(${Math.random() * 60 + 250}, 80%, 70%, ${Math.random() * 0.2 + 0.1})`,
-                type: Math.floor(Math.random() * 3) // 0: circle, 1: triangle, 2: rectangle
+                color: `hsla(${Math.random() * 60 + 890}, 80%, 70%, ${Math.random() * 0.2 + 0.1})`,
+                type: Math.floor(Math.random() * 3)
             });
         }
 
@@ -154,7 +154,7 @@ const Homepage = () => {
                         onClick={() => navigate("/Portofolio")}
                         whileHover={{ opacity: 0.8 }}
                     >
-                        /enter to  <span className="text-2xl text-amber-600">Start</span>?
+                        /enter to  <span className="text-5xl font-bold text-amber-600">Start</span>?
                     </motion.div>
 
                     <motion.div
