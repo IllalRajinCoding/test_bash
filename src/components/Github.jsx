@@ -5,7 +5,7 @@ const GithubStats = () => {
     const stats = {
         stars: 4,
         forks: 2,
-        commits: 984,
+        commits: 1.984,
         username: 'IllalRajinCoding'
     };
 

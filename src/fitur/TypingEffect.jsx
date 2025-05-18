@@ -1,73 +1,38 @@
-import React, { useEffect, useState } from "react";
+import { TypeAnimation } from "react-type-animation";
+import { motion } from "framer-motion";
 
-
-
-const TypingEffect = ({ text, speed = 100, delay = 2000 }) => {
-  const [index, setIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
-
-  useEffect(() => {
-    let timeout;
-
-    // When text is fully typed, pause for 2 seconds
-    if (index === text.length && !isDeleting) {
-      setIsPaused(true);
-      timeout = setTimeout(() => {
-        setIsPaused(false);
-        setIsDeleting(true);
-      }, 2000); // 2 second pause
-    } else {
-      const typingSpeed = isDeleting ? speed * 0.6 : speed; // Make deletion a bit faster
-
-      timeout = setTimeout(
-        () => {
-          if (isPaused) return;
-
-          setIndex((prev) => {
-            if (!isDeleting && prev < text.length) return prev + 1;
-            if (isDeleting && prev > 0) return prev - 1;
-
-            // When complete deletion, reset to typing mode
-            if (isDeleting && prev === 0) {
-              setIsDeleting(false);
-              return 0;
-            }
-
-            return prev;
-          });
-        },
-        isDeleting && index === 0 ? delay : typingSpeed
-      );
-    }
-
-    return () => clearTimeout(timeout);
-  }, [index, isDeleting, isPaused, text, speed, delay]);
-
-  // Cursor animation style
-  const cursorStyle = {
-    display: "inline-block",
-    width: "3px",
-    height: "0.9em",
-    marginLeft: "2px",
-    backgroundColor: "#6366f1",
-    animation: "blink 1s step-end infinite",
-  };
-
-  // Text with gradient effect
+export default function TypingEffect() {
   return (
-    <div className="pb-8 font-thin lg:mt-16 lg:pb-8 text-gray-900 relative">
-      <div className="relative">
-        <span className="text-2xl lg:text-5xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent font-medium">
-          {text.slice(0, index)}
-        </span>
-        <span
-          style={cursorStyle}
-          className="animate-pulse text-2xl lg:text-5xl"
-        />
-      </div>
-    </div>
+    <motion.div
+      className="typing-effect-container text-2xl lg:text-5xl" // Tambahkan class untuk styling lebih lanjut jika perlu
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+    >
+      <TypeAnimation
+        sequence={[
+          "I'm Robbanie Hillaly Kurniadien",
+          1000,
+          "I'm a Frontend Developer",
+          1000,
+          () => {
+            console.log("Done typing!");
+          },
+        ]}
+        speed={20
+        }
+        wrapper={motion.span}
+        cursor={true}
+        repeat={Infinity}
+        className="typing-text text-" // Tambahkan class untuk styling teks
+        initial={{ opacity: 0.5, scale: 0.9, textShadow: "0 0 0px rgba(255, 255, 255, 0)" }}
+        animate={{
+          opacity: 1,
+          scale: 1,
+          textShadow: "0 0 10px rgba(255, 255, 255, 0.9)",
+        }}
+        transition={{ duration: 0.3, ease: "backOut" }}
+      />
+    </motion.div>
   );
-};
-
-export default TypingEffect;
+}

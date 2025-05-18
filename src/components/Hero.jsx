@@ -10,19 +10,7 @@ const Hero = () => {
       <div className="flex flex-col lg:flex-row">
         <div className="w-full px-4 mb-8 lg:mb-0 lg:w-1/2">
           <div className="flex flex-col pt-25 items-center lg:items-start">
-            <TypingEffect
-              text={"I'm Robbanie Hillaly Kurniadien"}
-              speed={100}
-              delay={2000}
-            />
-            <motion.span
-              whileInView={{ opacity: 1, x: 0 }}
-              initial={{ x: -100, opacity: 0 }}
-              transition={{ duration: 0.5 }}
-              className="bg-gradient-to-r text-2xl from-pink-300 via-slate-500 to-purple-500 bg-clip-text lg:text-4xl tracking-tight text-transparent text-center lg:text-left"
-            >
-              Front-End Developer
-            </motion.span>
+            <TypingEffect />
             <motion.p
               whileInView={{ opacity: 1, x: 0 }}
               initial={{ x: 100, opacity: 0 }}

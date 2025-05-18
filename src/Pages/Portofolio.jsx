@@ -7,7 +7,6 @@ import Projects from "../components/Projects";
 import NegativeCircleCursor from "../fitur/NegatifCursor";
 import React, { useEffect, useState } from "react";
 import BarLoader from "react-spinners/BarLoader";
-import Navi from "../fitur/Navigate";
 import GithubStats from "../components/Github";
 
 function Portofolio() {
@@ -23,7 +22,7 @@ function Portofolio() {
   return (
     <div>
       {loading ?
-        <div className="flex justify-center items-center h-screen flex-col bg-black gap-4 animate-pulse">
+        <div className="flex justify-center items-center h-screen flex-col bg-black gap-4">
           <BarLoader size={40} color={"#123abc"} loading={loading} />
         </div>
         :
@@ -41,7 +40,6 @@ function Portofolio() {
             <Experience />
             <Projects />
             <GithubStats />
-            <Navi />
             {/* <Contact /> */}
           </div>
         </div>

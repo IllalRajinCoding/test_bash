@@ -12,7 +12,7 @@ const Projects = () => {
       >
         Projects
       </motion.h2>
-      <div>
+      {/* <div>
         {PROJECTS.map((project, index) => (
           <div key={index} className="mb-8 flex flex-wrap lg:justify-center">
             <motion.div
@@ -49,6 +49,9 @@ const Projects = () => {
             </motion.div>
           </div>
         ))}
+      </div> */}
+      <div className="text-center al">
+        <h1>Not yet</h1>
       </div>
     </div>
   );
