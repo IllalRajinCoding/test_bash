@@ -4,7 +4,6 @@ import About from "../components/About";
 import Skills from "../components/Skills";
 import Experience from "../components/Experience";
 import Projects from "../components/Projects";
-import NegativeCircleCursor from "../fitur/NegatifCursor";
 import React, { useEffect, useState } from "react";
 import BarLoader from "react-spinners/BarLoader";
 import Contact from "../components/Contact";
@@ -29,8 +28,6 @@ function Portofolio() {
         </div>
       ) : (
         <div className="overflow-x-hidden text-neutral-300 antialiased selection:bg-cyan-300 selection:text-cyan-900">
-          <NegativeCircleCursor />
-
           <div className="fixed top-0 -z-10 h-full w-full pointer-events-none"> {/* Added pointer-events-none */}
             {/* Base Radial Gradient */}
             <div className="absolute inset-0 bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
