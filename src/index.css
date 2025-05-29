@@ -3,111 +3,21 @@
 :root {
   font-family: "Poppins", sans-serif;
 }
-
-.github-stats {
-  padding: 20px;
-  background: #f5f5f5;
-  border-radius: 8px;
-  margin: 20px 0;
+/* Tambahkan ini di file CSS global Anda, misal: index.css atau globals.css */
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) skewX(-30deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-30deg);
+  }
 }
 
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 20px;
+.animate-shine {
+  animation: shine 1.5s infinite; /* Atur durasi dan infinite jika ingin selalu bergerak, atau sesuaikan dengan kebutuhan hover */
+  animation-play-state: paused; /* Pause secara default */
 }
 
-.stat-item {
-  background: white;
-  padding: 15px;
-  border-radius: 5px;
-  text-align: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.stat-item h3 {
-  margin-top: 0;
-  color: #555;
-}
-
-.stat-item p {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 0;
-  color: #333;
-}
-
-.portofolio-container {
-  overflow-x: hidden;
-  /* Mencegah scroll horizontal */
-}
-
-.hero-section {
-  height: 100vh;
-  /* Atau sesuai kebutuhan */
-  background-image: url("../assets/hero-bg.jpg");
-  /* Ganti dengan gambar Anda */
-  background-size: cover;
-  background-attachment: fixed;
-  /* Efek paralaks dasar */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  text-align: center;
-}
-
-.about-section,
-.skills-section,
-.experience-section,
-.projects-section,
-.github-section {
-  min-height: 80vh;
-  /* Atau sesuai kebutuhan */
-  padding: 50px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.about-section {
-  background-color: #f0f0f0;
-  color: #333;
-}
-
-.skills-section {
-  background-color: #ddd;
-  color: #444;
-}
-
-.experience-section {
-  background-color: #eee;
-  color: #555;
-}
-
-.projects-section {
-  background-color: #ccc;
-  color: #666;
-}
-
-.github-section {
-  background-color: #bbb;
-  color: #777;
-}
-
-/* Styling loader (jika belum ada) */
-.loader-container {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.typing-text {
-  font-size: 2em;
-  display: inline-block;
-  color: #fff; /* Pastikan warna teks sudah diatur */
-  /* Efek glow statis (opsional, bisa dihapus jika hanya ingin animasi glow) */
-  /* text-shadow: 0 0 5px rgba(255, 255, 255, 0.8); */
+.group:hover .animate-shine {
+  animation-play-state: running; /* Jalankan saat di-hover */
 }
