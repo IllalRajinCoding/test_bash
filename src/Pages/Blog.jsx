@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { blogData } from "../constants/blogData";
 import { motion } from "framer-motion";
 
 const Blog = () => {
   const navigate = useNavigate();
+  const [showAll, setShowAll] = useState(false);
+  
+  // Get all blog entries
+  const blogEntries = Object.entries(blogData);
+  
+  // Determine which posts to show based on state
+  const postsToShow = showAll ? blogEntries : blogEntries.slice(0, 3);
 
   const handlePostClick = (category) => {
     navigate(`/blog/${category.toLowerCase()}`);
@@ -34,7 +41,7 @@ const Blog = () => {
         transition={{ duration: 0.5 }}
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
       >
-        {Object.entries(blogData).map(([category, post]) => (
+        {postsToShow.map(([category, post]) => (
           <article
             key={category}
             onClick={() => handlePostClick(category)}
@@ -58,12 +65,12 @@ const Blog = () => {
                 <span>{post.readTime}</span>
               </div>
               <p className="text-neutral-400 text-sm sm:text-base line-clamp-3">
-                {post.content.split("\n")[3].replace(/[#\-]/g, "").trim()}
+                {post.content.split("\n")[3]?.replace(/[#\-]/g, "").trim() || "Read more..."}
               </p>
             </div>
             <div className="px-4 sm:px-6 py-3 sm:py-4 border-t border-neutral-800">
               <div className="flex flex-wrap gap-2">
-                {post.tags && post.tags.map((tag, index) => (
+                {post.tags?.map((tag, index) => (
                   <span
                     key={index}
                     className="inline-block bg-neutral-800 text-cyan-300 
@@ -77,6 +84,25 @@ const Blog = () => {
           </article>
         ))}
       </motion.div>
+
+      {/* View More Button (only show if there are more than 3 posts) */}
+      {blogEntries.length > 3 && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          className="text-center mt-8"
+        >
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="px-6 py-2 bg-neutral-800 hover:bg-neutral-700 
+              text-cyan-300 rounded-lg transition-colors duration-300
+              border border-neutral-700 hover:border-cyan-300/50"
+          >
+            {showAll ? "Show Less" : "View More"}
+          </button>
+        </motion.div>
+      )}
     </section>
   );
 };

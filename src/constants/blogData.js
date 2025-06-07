@@ -1,77 +1,132 @@
 export const blogData = {
     'vite': {
-        title: "'vite' is not recognized on your project",
-        content: `
+        title: "Fixing 'vite' Command Not Found",
+        content: `# Solving Vite Command Not Found Error
 
+When starting with Vite, you might encounter this error:
+> 'vite' is not recognized as an internal or external command
 
-## Solution for 'vite' is not recognized
+## Solution Steps
 
-### 'vite' is not recognized as an internal or external command
-This error typically occurs when Vite isn't properly installed. Here's how to fix it:
+### 1. Install Dependencies
+First, make sure all dependencies are installed:
 
 \`\`\`bash
-# You can installing npm i
+# Using npm
 npm install
 
-# yarn users can use
+# Using yarn
 yarn install
 \`\`\`
 
-### Happy Coding with Vite!
+### 2. Install Vite Globally
+If the error persists, install Vite globally:
 
-        `,
+\`\`\`bash
+npm install -g vite
+\`\`\`
+
+### 3. Check Installation
+Verify Vite is installed correctly:
+
+\`\`\`bash
+vite --version
+\`\`\`
+
+## Best Practices
+- Always initialize your project with \`npm create vite@latest\`
+- Use local installation when possible
+- Keep your npm/yarn up to date
+
+### Happy Coding with Vite! 🚀`,
         author: "Robbanie Hillaly",
         date: "June 7, 2024",
         readTime: "5 min read",
         tags: ["Vite", "JavaScript", "Web Development"]
     },
     'javascript': {
-        title: "Belajar JavaScript Pemula",
+        title: "Getting Started with JavaScript",
         content: `
+        
 
+        # Let's Learn JavaScript and create a simple project
+## Introduction
+JavaScript powers the modern web. Let's learn how to get started with this powerful language.
 
-### Belajar JavaScript Pemula.
-JavaScript adalah bahasa pemrograman yang sangat populer dan digunakan di berbagai bidang, terutama dalam pengembangan web. Dalam artikel ini, kita akan membahas beberapa fitur modern JavaScript yang membuat pengkodean lebih efisien.
-## **1. Installasi Node.js**
-Apa itu Node.js? Jadi Node.js adalah runtime JavaScript yang memungkinkan kita menjalankan JavaScript di luar browser. Untuk menginstalnya, kalian bisa langsung click "[Node.js](https://nodejs.org/)" atau bisa cari dibrowser dan unduh versi terbaru.
-## **2. Cek Apakah Node.js sudah terinstall**
-Untuk memastikan Node.js sudah terpasang, buka terminal atau command prompt dan ketik perintah berikut:
+## Setting Up Your Environment
+
+### 1. Installing Node.js
+First, install Node.js from [nodejs.org](https://nodejs.org/). Download the LTS version for better stability.
+
+### 2. Verifying Installation
+Check if Node.js is installed correctly:
+
 \`\`\`bash
-node -v
-# Atau
-npm -v
+node --version
+npm --version
 \`\`\`
-Jika Node.js terpasang dengan benar, perintah di atas akan menampilkan versi Node.js yang terpasang.
-## **3. Membuat Project JavaScript**
-Untuk membuat project JavaScript, kita bisa menggunakan perintah berikut:
+
+## Creating Your First Project
+
+### 1. Project Setup
+Create a new project directory:
+
 \`\`\`bash
-mkdir nama-project
-cd nama-project
+mkdir my-js-project
+cd my-js-project
 \`\`\`
-Kemudian, kita bisa membuat file JavaScript baru dengan nama \`index.js\`:
+
+### 2. Initialize Project
+Create your first JavaScript file:
+
 \`\`\`bash
-# Di Linux atau MacOS
-touch index.js
-# Atau di Windows
-echo > index.js
+echo. > index.js
 \`\`\`
-## **4. Menjalankan File JavaScript**
-Oke ini part yang mengasyikan. Akhirnya kita ngoding! Oke ketikan di dalam file \`index.js\`:
+
+### 3. Writing Code
+Add this to your \`index.js\`:
+
 \`\`\`javascript
+// Your first JavaScript program
 console.log("Hello, World!");
+
+// Variables
+const name = "Developer";
+console.log(\`Hello, \${name}!\`);
+
+// Functions
+function greet(name) {
+  return \`Welcome, \${name}!\`;
+}
 \`\`\`
-Kemudian, untuk menjalankan file JavaScript tersebut, kita bisa menggunakan perintah berikut di terminal:
+
+### 4. Running Your Code
+Execute your JavaScript file:
+
 \`\`\`bash
 node index.js
 \`\`\`
-Outputnya apa ya? Outputnya adalah:
-\`\`\`
-Hello, World!
-\`\`\`
-Tada kita sudah berhasil membuat dan menjalankan file JavaScript pertama kita! Selamat!        `,
+
+## Next Steps
+- Learn about variables and data types
+- Explore functions and objects
+- Study modern ES6+ features
+
+Happy coding! 🎉`,
         author: "Robbanie Hillaly Kurniadien",
         date: "June 7, 2024",
         readTime: "8 min read",
         tags: ["JavaScript", "ES6", "Web Development"]
+    },
+    'new': {
+        title: "First Post in My Blog - Welcome!",
+        content: `
+
+        # Welcome to My Blog!
+This is my first post. Stay tuned for more updates!`,
+        author: "Robbanie Hillaly Kurniadien",
+        date: "June 7, 2024",
+        readTime: "1 min read",
+        tags: ["Introduction", "Blog", "Welcome"]
     }
 };
