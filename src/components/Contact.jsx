@@ -107,9 +107,9 @@ export default function Contact() {
   };
 
   return (
-    <section className="py-20 lg:py-36 px-4" ref={formSectionRef}>
+    <section className="py-15 lg:py-20 px-4" ref={formSectionRef}>
       <h2 ref={titleRef} className="my-20 text-center text-4xl">
-        If you interest can you <span className="text-neutral-500">Contact Me</span>
+        Contact Me
       </h2>
       <form onSubmit={onSubmit} className="max-w-3xl mx-auto space-y-8">
         <input

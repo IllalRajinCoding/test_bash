@@ -25,8 +25,8 @@ export const EXPERIENCES = [
     year: "2021 - 2024",
     role: "Design Grafis",
     company: "Freelance",
-    description: `Developed and maintained web applications using JavaScript, React.js, and Node.js. Designed and implemented RESTful APIs for data communication. Collaborated with cross-functional teams to deliver high-quality software products on schedule.`,
-    technologies: ["Pixellab", "Alight Motion", "Figma", "Adobe Photoshop"],
+    description: `I Accept project design grafis like logo, poster, banner, etc.`,
+    technologies: ["Pixellab", "Alight Motion", "Figma"],
     certificateUrl: null
   },
 ];

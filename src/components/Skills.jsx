@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import {
   FaHtml5,
   FaCss3Alt,
@@ -36,29 +35,17 @@ const Skills = () => {
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
           {skills.map((skill, index) => (
-            <motion.div
+            <div
               key={index}
               className="bg-neutral-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
             >
               <div className="flex flex-col items-center">
-                <motion.div
-                  whileInView={{ opacity: 1, y: 0 }}
-                  initial={{ y: -100, opacity: 0 }}
-                  transition={{ duration: 0.5 }}
-                  className="mb-4 p-3 bg-neutral-700 rounded-full"
-                >
+                <div className="mb-4 p-3 bg-neutral-700 rounded-full">
                   {skill.icon}
-                </motion.div>
-                <motion.h3
-                  whileInView={{ opacity: 1, x: 0 }}
-                  initial={{ x: -100, opacity: 0 }}
-                  transition={{ duration: 1 }}
-                  className="text-xl  mb-2"
-                >
-                  {skill.name}
-                </motion.h3>
+                </div>
+                <h3 className="text-xl  mb-2">{skill.name}</h3>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
