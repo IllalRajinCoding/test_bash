@@ -6,7 +6,8 @@ module.exports = {
     theme: {
         extend: {
             animation: {
-                'blink': 'blink 1s step-end infinite'
+                'blink': 'blink 1s step-end infinite',
+                'background-grid': 'grid 15s linear infinite'
             },
             keyframes: {
                 blink: {

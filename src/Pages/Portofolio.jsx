@@ -1,52 +1,72 @@
-import Hero from "../components/Hero";
-import Navbar from "../components/Navbar";
-import About from "../components/About";
-import Skills from "../components/Skills";
-import Experience from "../components/Experience";
-import Projects from "../components/Projects";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, lazy, Suspense } from "react";
 import BarLoader from "react-spinners/BarLoader";
-import Contact from "../components/Contact";
-import Blog from "./Blog";
+import Navbar from "../components/Navbar";
+import Hero from "../components/Hero";
 
-function Portofolio() {
-  const [loading, setLoading] = useState(true); // Set initial loading to true
+// Lazy load components that are not immediately visible
+const About = lazy(() => import("../components/About"));
+const Skills = lazy(() => import("../components/Skills"));
+const Experience = lazy(() => import("../components/Experience"));
+const Projects = lazy(() => import("../components/Projects"));
+const Contact = lazy(() => import("../components/Contact"));
+const Blog = lazy(() => import("./Blog"));
+
+function Portfolio() {
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading time
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2500); // Shorter loading time for better user experience
+    // Preload critical resources
+    const preloadResources = async () => {
+      try {
+        // Add any critical resource loading here
+        await Promise.all([
+          // Example: preload images, fetch initial data, etc.
+        ]);
+      } finally {
+        const timer = setTimeout(() => {
+          setLoading(false);
+        }, 2000); // Reduced loading time
+        return () => clearTimeout(timer);
+      }
+    };
 
-    return () => clearTimeout(timer); // Cleanup timer
+    preloadResources();
   }, []);
+
+  const LoadingScreen = () => (
+    <div className="flex justify-center items-center h-screen w-screen flex-col bg-black gap-4 fixed top-0 left-0 z-50">
+      <BarLoader color="#4fd1c5" loading={loading} />{" "}
+      {/* Changed to teal color to match theme */}
+    </div>
+  );
+
+  const Background = () => (
+    <>
+      <div className="fixed top-0 -z-10 h-full w-full pointer-events-none">
+        <div className="absolute inset-0 bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]" />
+        <div className="absolute inset-0 z-[-1] opacity-10 animate-background-grid" />
+      </div>
+    </>
+  );
 
   return (
     <div>
       {loading ? (
-        <div className="flex justify-center items-center h-screen w-screen flex-col bg-black gap-4 fixed top-0 left-0 z-50"> {/* Full screen loader */}
-          <BarLoader color={"#123abc"} loading={loading} /> {/* Assuming you want this color */}
-        </div>
+        <LoadingScreen />
       ) : (
         <div className="overflow-x-hidden text-neutral-300 antialiased selection:bg-cyan-300 selection:text-cyan-900">
-          <div className="fixed top-0 -z-10 h-full w-full pointer-events-none"> {/* Added pointer-events-none */}
-            {/* Base Radial Gradient */}
-            <div className="absolute inset-0 bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"></div>
-
-            {/* Interactive Grid Overlay */}
-            <div className="absolute inset-0 z-[-1] opacity-10 animate-background-grid"></div>
-          </div>
-
-          <div className="container mx-auto px-8">
+          <Background />
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <Navbar />
             <Hero />
-            <About />
-            <Skills />
-            <Experience />
-            <Blog />
-            <Projects />
-
-            <Contact />
+            <Suspense fallback={<div className="h-screen" />}>
+              <About />
+              <Skills />
+              <Experience />
+              <Blog />
+              <Projects />
+              <Contact />
+            </Suspense>
           </div>
         </div>
       )}
@@ -54,4 +74,4 @@ function Portofolio() {
   );
 }
 
-export default Portofolio;
+export default Portfolio;

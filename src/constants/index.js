@@ -7,9 +7,9 @@ export const NOTFOUND = {
   img: no
 }
 
-export const HERO_CONTENT = `Learn and learn that is motivation for me to be Front-End developer. I just like coding, drawing, ethical hacking and learn machine learning, cause i love mathematics.`;
+export const HERO_CONTENT = `Learn and learn that is motivation for me to be a good man. I just like coding, drawing, ethical hacking and learn machine learning, cause i love mathematics.`;
 
-export const ABOUT_TEXT = `I am student at STT Terpadu Nurul Fikri semester 2, study program Technic Informatika, and I am interested in Front-End development. I am learning and practicing every day to improve my skills. I am also interested in machine learning and ethical hacking.`;
+export const ABOUT_TEXT = `I am student at STT Terpadu Nurul Fikri semester 2, study program Technic Informatika, and I am interested in Machine Learning. I am learning and practicing every day to improve my skills.`;
 
 export const EXPERIENCES = [
   {

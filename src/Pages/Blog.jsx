@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { blogData } from "../constants/blogData";
+import { motion } from "framer-motion";
 
 const Blog = () => {
   const navigate = useNavigate();
@@ -10,19 +11,26 @@ const Blog = () => {
   };
 
   return (
-    <section className="py-20">
+    <section className="p-20">
       {/* Header */}
-      <div className="text-center mb-12">
-        <h2 className="text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-pink-300 via-slate-500 to-purple-500 bg-clip-text text-transparent">
-          Blog Post
+      <motion.div
+        initial={{ x: -100, opacity: 0 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5 }}
+        className="text-center mb-12"
+      >
+        <h2 className="my-20 text-center text-4xl">
+          Blog & <span className="text-neutral-500">Learning</span>
         </h2>
-        <p className="text-xl text-neutral-400">
-          Thoughts and tutorials on web development
-        </p>
-      </div>
+      </motion.div>
 
       {/* Blog Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <motion.div
+        whileInView={{ opacity: 1, y: 0 }}
+        initial={{ y: 100, opacity: 0 }}
+        transition={{ duration: 0.5 }}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+      >
         {Object.entries(blogData).map(([category, post]) => (
           <article
             key={category}
@@ -40,7 +48,7 @@ const Blog = () => {
                 <span>{post.readTime}</span>
               </div>
               <p className="text-neutral-400 line-clamp-3">
-                {post.content.split('\n')[3].replace(/[#\-]/g, '').trim()}
+                {post.content.split("\n")[3].replace(/[#\-]/g, "").trim()}
               </p>
             </div>
             <div className="px-6 py-4 border-t border-neutral-800">
@@ -50,7 +58,7 @@ const Blog = () => {
             </div>
           </article>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };
