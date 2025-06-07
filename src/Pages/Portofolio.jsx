@@ -3,29 +3,24 @@ import BarLoader from "react-spinners/BarLoader";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 
-// Lazy load components that are not immediately visible
 const About = lazy(() => import("../components/About"));
 const Skills = lazy(() => import("../components/Skills"));
 const Experience = lazy(() => import("../components/Experience"));
 const Projects = lazy(() => import("../components/Projects"));
 const Contact = lazy(() => import("../components/Contact"));
 const Blog = lazy(() => import("./Blog"));
-
 function Portfolio() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Preload critical resources
     const preloadResources = async () => {
       try {
-        // Add any critical resource loading here
         await Promise.all([
-          // Example: preload images, fetch initial data, etc.
         ]);
       } finally {
         const timer = setTimeout(() => {
           setLoading(false);
-        }, 2000); // Reduced loading time
+        }, 2000);
         return () => clearTimeout(timer);
       }
     };
@@ -36,7 +31,6 @@ function Portfolio() {
   const LoadingScreen = () => (
     <div className="flex justify-center items-center h-screen w-screen flex-col bg-black gap-4 fixed top-0 left-0 z-50">
       <BarLoader color="#4fd1c5" loading={loading} />{" "}
-      {/* Changed to teal color to match theme */}
     </div>
   );
 
@@ -72,6 +66,4 @@ function Portfolio() {
       )}
     </div>
   );
-}
-
-export default Portfolio;
+} export default Portfolio;
