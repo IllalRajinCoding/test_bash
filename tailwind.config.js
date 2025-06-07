@@ -1,5 +1,8 @@
 module.exports = {
-    
+    plugins: [
+        require('@tailwindcss/typography'),
+    ],
+
     theme: {
         extend: {
             animation: {
@@ -13,4 +16,5 @@ module.exports = {
             }
         }
     }
+
 }

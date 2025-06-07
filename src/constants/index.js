@@ -36,15 +36,15 @@ export const PROJECTS = [
     title: "E-Commerce Website",
     image: project1,
     description:
-      "A fully functional e-commerce website with features like product listing, shopping cart, and user authentication.",
-    technologies: ["HTML", "CSS", "React", "Node.js", "MongoDB"],
+      "Led full-stack development of an e-commerce platform as part of a 4-person team for STT Terpadu Nurul Fikri semester project. Implemented both frontend interfaces using Tailwind CSS and backend functionality with PHP/MySQL, handling user authentication, product management, and order processing.",
+    technologies: ["HTML", "CSS", "Tailwindcss", "PHP", "MySql"],
   },
   {
-    title: "Task Management App",
+    title: "Puskesmas Website",
     image: project2,
     description:
-      "An application for managing tasks and projects, with features such as task creation, assignment, and progress tracking.",
-    technologies: ["HTML", "CSS", "Angular", "Firebase"],
+      "Developed a comprehensive healthcare management system with a team of 4. Implemented CRUD operations, user authentication, and appointment scheduling. Built responsive frontend with Tailwind CSS and handled backend logic for data management.",
+    technologies: ["HTML", "CSS", "Javascript"],
   },
 ];
 

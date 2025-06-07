@@ -7,6 +7,7 @@ import Projects from "../components/Projects";
 import React, { useEffect, useState } from "react";
 import BarLoader from "react-spinners/BarLoader";
 import Contact from "../components/Contact";
+import Blog from "./Blog";
 
 function Portofolio() {
   const [loading, setLoading] = useState(true); // Set initial loading to true
@@ -42,7 +43,9 @@ function Portofolio() {
             <About />
             <Skills />
             <Experience />
+            <Blog />
             <Projects />
+
             <Contact />
           </div>
         </div>
