@@ -104,6 +104,9 @@ export default function Contact() {
       console.error("Network or submission error:", error);
       setResult("An error occurred. Please try again.");
     }
+   setTimeout(() => {
+      setResult("");
+    }, 3000);
   };
 
   return (
