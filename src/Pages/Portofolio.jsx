@@ -42,15 +42,13 @@ function Portfolio() {
     updateMetaTag('og:title', 'Robbanie Hillaly | Full Stack Developer Portfolio', true);
     updateMetaTag('og:description', 'Portfolio dan blog Robbanie Hillaly, Full Stack Developer yang berpengalaman dalam React, JavaScript, PHP, dan teknologi web modern.', true);
     updateMetaTag('og:type', 'website', true);
-    updateMetaTag('og:url', 'https://robbanie-portfolio.vercel.app', true);
+    updateMetaTag('og:url', 'https://www.loxyland.web.id', true);
     updateMetaTag('og:site_name', 'Robbanie Hillaly Portfolio', true);
-    updateMetaTag('og:image', 'https://robbanie-portfolio.vercel.app/images/og-image.png', true);
 
     // Twitter Card tags
     updateMetaTag('twitter:card', 'summary_large_image', true);
     updateMetaTag('twitter:title', 'Robbanie Hillaly | Full Stack Developer Portfolio', true);
     updateMetaTag('twitter:description', 'Portfolio dan blog Robbanie Hillaly, Full Stack Developer yang berpengalaman dalam React, JavaScript, PHP, dan teknologi web modern.', true);
-    updateMetaTag('twitter:image', 'https://robbanie-portfolio.vercel.app/images/og-image.png', true);
 
     // Canonical URL
     let canonical = document.querySelector('link[rel="canonical"]');
@@ -59,7 +57,7 @@ function Portfolio() {
       canonical.setAttribute('rel', 'canonical');
       document.head.appendChild(canonical);
     }
-    canonical.setAttribute('href', 'https://robbanie-portfolio.vercel.app');
+    canonical.setAttribute('href', 'https://www.loxyland.web.id');
 
     // Structured Data (JSON-LD) for better SEO
     const structuredData = {
@@ -68,8 +66,8 @@ function Portfolio() {
       "name": "Robbanie Hillaly Kurniadien",
       "jobTitle": "Full Stack Developer",
       "description": "Full Stack Developer specializing in React, JavaScript, PHP and modern web development",
-      "url": "https://robbanie-portfolio.vercel.app",
-      "image": "https://robbanie-portfolio.vercel.app/images/profile.jpg",
+      "url": "https://porto-two-phi.vercel.app/",
+      "image": "https://porto-two-phi.vercel.app/images/profile.jpg",
       "alumniOf": "STT Terpadu Nurul Fikri",
       "knowsAbout": [
         "JavaScript",
