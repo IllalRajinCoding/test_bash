@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://robbanie-portfolio.vercel.app/sitemap.xml
+
+# Block admin pages (if any)
+Disallow: /admin/
+Disallow: /private/

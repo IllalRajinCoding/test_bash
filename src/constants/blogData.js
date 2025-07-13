@@ -1,4 +1,10 @@
 export const blogData = {
+    'tech': {
+        title: "How to build your website to fast",
+        content: `# Building a Fast Website`
+        
+
+    },
     'vite': {
         title: "Fixing 'vite' Command Not Found",
         content: `# Solving Vite Command Not Found Error
@@ -25,7 +31,7 @@ If the error persists, install Vite globally:
 \`\`\`bash
 npm install -g vite
 \`\`\`
-### Happy Coding with Vite! 🚀`,
+### Happy Coding with Vite!`,
         author: "Robbanie Hillaly",
         date: "June 7, 2024",
         readTime: "5 min read",

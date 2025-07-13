@@ -9,8 +9,93 @@ const Experience = lazy(() => import("../components/Experience"));
 const Projects = lazy(() => import("../components/Projects"));
 const Contact = lazy(() => import("../components/Contact"));
 const Blog = lazy(() => import("./Blog"));
+
 function Portfolio() {
   const [loading, setLoading] = useState(true);
+
+  // SEO Implementation
+  useEffect(() => {
+    // Update page title
+    document.title = "Robbanie Hillaly | Full Stack Developer Portfolio";
+    
+    // Function to update or create meta tag
+    const updateMetaTag = (name, content, property = false) => {
+      const attribute = property ? 'property' : 'name';
+      let meta = document.querySelector(`meta[${attribute}="${name}"]`);
+      
+      if (!meta) {
+        meta = document.createElement('meta');
+        meta.setAttribute(attribute, name);
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute('content', content);
+    };
+
+    // Basic SEO meta tags
+    updateMetaTag('description', 'Portfolio dan blog Robbanie Hillaly, Full Stack Developer yang berpengalaman dalam React, JavaScript, PHP, dan teknologi web modern. Lihat proyek dan artikel tutorial programming.');
+    updateMetaTag('keywords', 'full stack developer, web developer, react developer, javascript developer, PHP developer, robbanie hillaly, portfolio developer indonesia, tutorial programming');
+    updateMetaTag('author', 'Robbanie Hillaly Kurniadien');
+    updateMetaTag('robots', 'index, follow');
+    updateMetaTag('language', 'Indonesian');
+
+    // Open Graph tags for social media
+    updateMetaTag('og:title', 'Robbanie Hillaly | Full Stack Developer Portfolio', true);
+    updateMetaTag('og:description', 'Portfolio dan blog Robbanie Hillaly, Full Stack Developer yang berpengalaman dalam React, JavaScript, PHP, dan teknologi web modern.', true);
+    updateMetaTag('og:type', 'website', true);
+    updateMetaTag('og:url', 'https://robbanie-portfolio.vercel.app', true);
+    updateMetaTag('og:site_name', 'Robbanie Hillaly Portfolio', true);
+    updateMetaTag('og:image', 'https://robbanie-portfolio.vercel.app/images/og-image.png', true);
+
+    // Twitter Card tags
+    updateMetaTag('twitter:card', 'summary_large_image', true);
+    updateMetaTag('twitter:title', 'Robbanie Hillaly | Full Stack Developer Portfolio', true);
+    updateMetaTag('twitter:description', 'Portfolio dan blog Robbanie Hillaly, Full Stack Developer yang berpengalaman dalam React, JavaScript, PHP, dan teknologi web modern.', true);
+    updateMetaTag('twitter:image', 'https://robbanie-portfolio.vercel.app/images/og-image.png', true);
+
+    // Canonical URL
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', 'https://robbanie-portfolio.vercel.app');
+
+    // Structured Data (JSON-LD) for better SEO
+    const structuredData = {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Robbanie Hillaly Kurniadien",
+      "jobTitle": "Full Stack Developer",
+      "description": "Full Stack Developer specializing in React, JavaScript, PHP and modern web development",
+      "url": "https://robbanie-portfolio.vercel.app",
+      "image": "https://robbanie-portfolio.vercel.app/images/profile.jpg",
+      "alumniOf": "STT Terpadu Nurul Fikri",
+      "knowsAbout": [
+        "JavaScript",
+        "React",
+        "PHP",
+        "MySQL",
+        "Tailwind CSS",
+        "Full Stack Development",
+        "Web Development"
+      ],
+      "sameAs": [
+        "https://github.com/robbaniehillaly",
+        "https://linkedin.com/in/robbaniehillaly"
+      ]
+    };
+
+    // Add or update structured data script
+    let structuredScript = document.querySelector('script[type="application/ld+json"]');
+    if (!structuredScript) {
+      structuredScript = document.createElement('script');
+      structuredScript.type = 'application/ld+json';
+      document.head.appendChild(structuredScript);
+    }
+    structuredScript.textContent = JSON.stringify(structuredData);
+
+  }, []);
 
   useEffect(() => {
     const preloadResources = async () => {
@@ -66,4 +151,6 @@ function Portfolio() {
       )}
     </div>
   );
-} export default Portfolio;
+} 
+
+export default Portfolio;
