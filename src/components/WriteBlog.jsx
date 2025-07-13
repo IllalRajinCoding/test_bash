@@ -41,7 +41,7 @@ const WriteBlog = () => {
         meta.setAttribute('content', content);
       };
 
-      const currentUrl = `https://www.loxyland.web.id/${category}`;
+      const currentUrl = `https://www.loxyland.web.id/blog/${category}`;
       
       updateMetaTag('description', `${previewText.substring(0, 150)}... Tutorial dan tips programming dari Robbanie Hillaly.`);
       updateMetaTag('keywords', `${post.tags?.join(', ') || ''}, tutorial programming, robbanie hillaly, blog developer`);
@@ -60,7 +60,7 @@ const WriteBlog = () => {
 
   // Share functions
   const getCurrentUrl = () => {
-    return `https://www.loxyland.web.id/${category}`;
+    return `https://www.loxyland.web.id/blog/${category}`;
   };
 
   const shareLinks = {
