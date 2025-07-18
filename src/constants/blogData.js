@@ -1,13 +1,7 @@
 export const blogData = {
-    'tech': {
-        title: "How to build your website to fast",
-        content: `# Building a Fast Website`
-        
-
-    },
-    'vite': {
-        title: "Fixing 'vite' Command Not Found",
-        content: `# Solving Vite Command Not Found Error
+  'vite': {
+    title: "Fixing 'vite' Command Not Found",
+    content: `# Solving Vite Command Not Found Error
 
 When starting with Vite, you might encounter this error:
 > 'vite' is not recognized as an internal or external command
@@ -32,16 +26,14 @@ If the error persists, install Vite globally:
 npm install -g vite
 \`\`\`
 ### Happy Coding with Vite!`,
-        author: "Robbanie Hillaly",
-        date: "June 7, 2024",
-        readTime: "5 min read",
-        tags: ["Vite", "JavaScript", "Web Development"]
-    },
-    'javascript': {
-        title: "Getting Started with JavaScript",
-        content: `
-        
-
+    author: "Robbanie Hillaly",
+    date: "June 7, 2024",
+    readTime: "5 min read",
+    tags: ["Vite", "JavaScript", "Web Development"]
+  },
+  'javascript': {
+    title: "Getting Started with JavaScript",
+    content: `
 # Let's Learn JavaScript and create a simple project
 ## Introduction
 JavaScript powers the modern web. Let's learn how to get started with this powerful language.
@@ -107,20 +99,20 @@ node index.js
 
 Happy coding!
 `,
-        author: "Robbanie Hillaly Kurniadien",
-        date: "June 7, 2024",
-        readTime: "8 min read",
-        tags: ["JavaScript", "ES6", "Web Development"]
-    },
-    'new': {
-        title: "First Post in My Blog - Welcome!",
-        content: `
+    author: "Robbanie Hillaly Kurniadien",
+    date: "June 7, 2024",
+    readTime: "8 min read",
+    tags: ["JavaScript", "ES6", "Web Development"]
+  },
+  'new': {
+    title: "First Post in My Blog - Welcome!",
+    content: `
 
 # Welcome to My Blog!
 This is my first post. Stay tuned for more updates!`,
-        author: "Robbanie Hillaly Kurniadien",
-        date: "June 7, 2024",
-        readTime: "1 min read",
-        tags: ["Introduction", "Blog", "Welcome"]
-    }
+    author: "Robbanie Hillaly Kurniadien",
+    date: "June 7, 2024",
+    readTime: "1 min read",
+    tags: ["Introduction", "Blog", "Welcome"]
+  }
 };
